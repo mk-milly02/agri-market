@@ -1,0 +1,16 @@
+services:
+  ticktettribe_db:
+    image: postgres:latest
+    container_name: ticktettribe_db
+    restart: always
+    environment:
+      - POSTGRES_USER=${DEV_DB_USER}
+      - POSTGRES_PASSWORD=${DEV_DB_PASSWORD}
+      - POSTGRES_DB=${DEV_DB_NAME}
+    volumes:
+      - ticktettribe_db_data:/var/lib/postgresql/data
+    ports:
+      - '${DEV_DB_PORT}:5432'
+
+volumes:
+  ticktettribe_db_data:
